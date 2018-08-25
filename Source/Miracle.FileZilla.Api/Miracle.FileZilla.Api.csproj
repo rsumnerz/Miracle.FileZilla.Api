@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net462;netstandard2.0;net45;net452;net46;net461</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Miracle.FileZilla.Api</DocumentationFile>
+    <Version>3.2.0</Version>
+    <Authors>Philip Hoppe</Authors>
+    <Company>Miracle A/S</Company>
+    <PackageLicenseUrl>https://github.com/PolarbearDK/Miracle.FileZilla.Api/raw/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/PolarbearDK/Miracle.FileZilla.Api</PackageProjectUrl>
+    <Description>Managed api for FileZilla FTP server. Primarily for automated user/group management, but all functionallity in the FileZilla Server interface is supported.</Description>
+    <Copyright>Copyright © Philip Hoppe, Miracle A/S 2014-2018</Copyright>
+    <PackageTags>FileZilla FTP server api create user users group groups setting settings automate automated state</PackageTags>
+    <PackageReleaseNotes>ForceSsl as TriState</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIconUrl>https://github.com/PolarbearDK/Miracle.FileZilla.Api/raw/master/nuget-icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/PolarbearDK/Miracle.FileZilla.Api</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+  </PropertyGroup>
+  <!-- .NET Standard references, compilation flags and build options -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
+    <DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD1_6</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6' OR '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
+  </ItemGroup>
+  <!-- .NET 4.x references, compilation flags and build options -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
+    <DefineConstants>NETFULL;NET45</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net452'">
+    <DefineConstants>NETFULL;NET45;NET452</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net46'">
+    <DefineConstants>NETFULL;NET46</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net461'">
+    <DefineConstants>NETFULL;NET46;NET461</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net462'">
+    <DefineConstants>NETFULL;NET46;NET462</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'netstandard1.6' AND '$(TargetFramework)' != 'netstandard2.0'">
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+</Project>
